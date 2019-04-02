@@ -1,0 +1,46 @@
+{% extends 'layout/layout.html' %}
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+    {% from "_macro.html" import render_field %}
+
+<div class="container">
+
+    <div class="col-lg-8">
+
+        <div class="card mt-5">
+                <div class="card-header">
+                        Formulario
+                </div>
+                <div class="card-body">
+                        <h5 class="card-title">Formulario</h5>
+        
+                <form name="sentMessage" id="contactForm" method="POST">
+
+                        <input type="hidden" name="csrf_token" value={{csrf_token() }}>
+
+                        <div class="form-group">
+                                {{ render_field(form.username, class='form-control') }}
+                        </div>
+                        <div class="form-group">
+                                {{ render_field(form.email, class='form-control') }}
+                        </div>
+                        <div class="form-group">
+                                {{ render_field(form.comment, class='form-control') }}
+                        </div>
+                        
+                        {{ render_field(form.honeypot, class='form-control') }}
+
+                        <div class="col-lg-4 ">
+                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                        
+                </form>
+        
+                </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
